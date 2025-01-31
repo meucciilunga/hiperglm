@@ -7,3 +7,4 @@ Description: Open-source GLM package implemented in R for 140.778 (Q3 2024-25)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.3.2
