@@ -19,5 +19,5 @@ vcov.hiperglm <- function(hiperglm_obj) {
 #' @export
 print.hiperglm <- function(hiperglm_obj) {
   warning("print.hiperglm is not yet implemented.")
-  invisible(x)
+  invisible(hiperglm_obj)
 }
