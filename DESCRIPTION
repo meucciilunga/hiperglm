@@ -1,0 +1,9 @@
+Package: hiperglm
+Type: Package
+Title: Opensource HiperGLM
+Version: 0.0.1
+Authors@R: person("Deerspring", "Here", email = "milunga2@jhu.edu", role = c("aut", "cre"))
+Description: Open-source GLM package implemented in R for 140.778 (Q3 2024-25)
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
