@@ -1,7 +1,7 @@
 # Coefficients
 #' Extract coefficients from a hiperglm object
 #' @export
-coef.hiperglm <- function(hiperglm_obj) {
+coef.hiperglm <- function(object, ...) {
   warning("coef.hiperglm is not yet implemented.")
   return(NULL)
 }
@@ -9,7 +9,7 @@ coef.hiperglm <- function(hiperglm_obj) {
 # Covariance Matrix
 #' Extract covariance matrix from a hiperglm object
 #' @export
-vcov.hiperglm <- function(hiperglm_obj) {
+vcov.hiperglm <- function(object, ...) {
   warning("vcov.hiperglm is not yet implemented.")
   return(NULL)
 }
