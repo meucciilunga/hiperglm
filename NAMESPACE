@@ -1,4 +1,4 @@
-export(hiper_glm)
+export(hiperglm)
 export(coef.hiperglm)
 export(vcov.hiperglm)
 export(print.hiperglm)
