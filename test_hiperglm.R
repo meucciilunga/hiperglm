@@ -8,6 +8,7 @@ design <- matrix(1:12, nrow = 4, ncol = 3)
 outcome <- c(1, 0, 1, 0)
 
 # Call the main function; creates a 'hiperglm' object
+message("\n\n--- --- --- --- --- ---\n\n")
 model_out <- hiperglm(design = design, outcome = outcome)
 message("\n\n--- --- --- --- --- ---\n\n")
 
