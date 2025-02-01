@@ -5,7 +5,7 @@
 \title{Summarize Model
 Print method for a hiperglm object}
 \usage{
-\method{print}{hiperglm}(hiperglm_obj)
+\method{print}{hiperglm}(x, ...)
 }
 \description{
 Summarize Model

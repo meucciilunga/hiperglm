@@ -17,7 +17,7 @@ vcov.hiperglm <- function(object, ...) {
 #' Summarize Model
 #' Print method for a hiperglm object
 #' @export
-print.hiperglm <- function(hiperglm_obj) {
+print.hiperglm <- function(x, ...) {
   warning("print.hiperglm is not yet implemented.")
-  invisible(hiperglm_obj)
+  invisible(x)
 }
