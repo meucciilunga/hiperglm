@@ -2,8 +2,8 @@
 #' Extract coefficients from a hiperglm object
 #' @export
 coef.hiperglm <- function(object, ...) {
-  warning("coef.hiperglm is not yet implemented.")
-  return(NULL)
+  # Return the numeric coefficient vector stored in the model
+  return(object$coef)
 }
 
 # Covariance Matrix
@@ -18,6 +18,8 @@ vcov.hiperglm <- function(object, ...) {
 #' Print method for a hiperglm object
 #' @export
 print.hiperglm <- function(x, ...) {
-  warning("print.hiperglm is not yet implemented.")
+  cat("hiperglm model fitted using", x$optimizer, "optimizer.\n")
+  cat("Coefficients:\n")
+  print(x$coef)
   invisible(x)
 }
