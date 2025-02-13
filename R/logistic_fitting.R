@@ -39,8 +39,21 @@ hiperglm_bfgs_logit <- function(design, outcome) {
 }
 
 # Logistic Hessian: Second derivative of the log-likelihood
-logistic_loglik_hess <- function(design, outcome, beta) {
+logit_loglik_hess <- function(design, outcome, beta) {
   p <- 1 / (1 + exp(-design %*% beta))
   W <- as.vector(p * (1 - p))
   - t(design) %*% (design * W)
+}
+
+# Perform Newton-Raphson iterations to compute logistic regression MLE coefficients.
+hiperglm_newton_logit <- function(design, outcome, iterations = 10) {
+  beta <- rep(0, ncol(design))
+
+  for (i in seq_len(iterations)) {
+    grad <- logit_loglik_grad(design, outcome, beta)
+    hess <- logit_loglik_hess(design, outcome, beta)
+    beta <- beta - solve(hess, grad)
+  }
+
+  beta
 }
