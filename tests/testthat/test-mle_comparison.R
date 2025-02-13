@@ -3,6 +3,8 @@
 # this test compares mle estimates from pseudo-inverse vs. BFGS 
 # (per hw2 instructions: expected to fail for now)
 
+library(testthat)
+
 test_that("pseudo-inverse and BFGS yield similar mle estimates", {
 
   # for reproducibility

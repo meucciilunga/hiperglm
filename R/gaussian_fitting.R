@@ -13,7 +13,7 @@ gaussian_loglik_grad <- function(design, outcome, noise_var, beta) {
 }
 
 # Optimizer function: OLS pseudo-inverse
-hiperglm_pseudo <- function(design, outcome) {
+gaussian_hiperglm_pseudo <- function(design, outcome) {
 
   # OLS pseudo-inverse approach solved as follows:
   # beta_hat = solve(t(design) %*% design, t(design) %*% outcome)
@@ -25,7 +25,7 @@ hiperglm_pseudo <- function(design, outcome) {
 }
 
 # Optimizer function: BFGS method
-hiperglm_bfgs <- function(design, outcome, noise_var = 1) {
+gaussian_hiperglm_bfgs <- function(design, outcome, noise_var = 1) {
 
   # Wrap loglik support functions from loglik.R so only input is in beta, like before
   llfn <- function(beta) gaussian_loglik_fn(design, outcome, noise_var, beta)
@@ -46,22 +46,8 @@ hiperglm_bfgs <- function(design, outcome, noise_var = 1) {
 
   # Check convergence: if convergence != 0, warn the user.
   if (opt_result$convergence != 0) {
-    warning("BFGS optimization did not converge before returning value: ", opt_result$message)
+    warning("BFGS optimization for gaussian did not converge before returning value: ", opt_result$message)
   }
   
   return(opt_result$par)
-}
-
-##############################
-
-# Logistic log-likelihood: Sum of log probabilities for all observations
-logistic_loglik_fn <- function(design, outcome, beta) {
-  p <- 1 / (1 + exp(-design %*% beta))
-  sum(outcome * log(p) + (1 - outcome) * log(1 - p))
-}
-
-# Logistic log-likelihood gradient: Derivative with respect to beta
-logistic_loglik_grad <- function(design, outcome, beta) {
-  p <- 1 / (1 + exp(-design %*% beta))
-  as.vector(t(design) %*% (outcome - p))
 }
