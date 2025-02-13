@@ -13,8 +13,8 @@ test_that("Log-likelihood gradient is consistent with finite differences", {
   noise_var <- 1
   
   # Wrap loglik support functions from loglik.R so only input is in beta, like before
-  llgr <- function(beta) hiperglm:::gaussian_loglik_grad(design, outcome, noise_var, beta)
-  llfn <- function(beta) hiperglm:::gaussian_loglik_fn(design, outcome, noise_var, beta)
+  llgr <- function(beta) gaussian_loglik_grad(design, outcome, noise_var, beta)
+  llfn <- function(beta) gaussian_loglik_fn(design, outcome, noise_var, beta)
 
   # pick test value
   beta_test <- rep(0.5, p)
@@ -27,5 +27,5 @@ test_that("Log-likelihood gradient is consistent with finite differences", {
   
   # check if they're close
   expect_true(are_all_close(analytical, numerical, rel_tol = 1e-3),
-              info = "Analytical gradient does not match numerical approximation")
+              info = "Analytical gaussian gradient does not match numerical approximation")
 })
