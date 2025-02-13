@@ -12,30 +12,18 @@ test_that("Log-likelihood gradient is consistent with finite differences", {
   outcome <- rnorm(n)
   noise_var <- 1
   
-  # ------- Reimplementation of hiperglm_bfgs() from hiperglm.R -------
-  # define the log-likelihood function as in hiperglm_bfgs()
-  loglik_fn <- function(beta) {
-    resid <- outcome - design %*% beta
-    -0.5 / noise_var * sum(resid^2)
-  }
-  
-  # define the analytical gradient as in hiperglm_bfgs()
-  loglik_grad <- function(beta) {
-    resid <- outcome - design %*% beta
-
-    # Compute the gradient: design^T (outcome - design beta) / noise_var
-    as.vector(t(design) %*% resid / noise_var)
-  }
-  # -------------------------------------------------------------------
+  # Wrap loglik support functions from loglik.R so only input is in beta, like before
+  llgr <- function(beta) loglik_grad(design, outcome, noise_var, beta)
+  llfn <- function(beta) loglik_fn(design, outcome, noise_var, beta)
 
   # pick test value
   beta_test <- rep(0.5, p)
   
   # compute gradient analytically
-  analytical <- loglik_grad(beta_test)
+  analytical <- llgr(beta_test)
   
   # computer gradient numerically (HW2 -- exercise 3 implementation)
-  numerical <- approx_grad(loglik_fn, beta_test)
+  numerical <- approx_grad(llfn, beta_test)
   
   # check if they're close
   expect_true(are_all_close(analytical, numerical, rel_tol = 1e-3),

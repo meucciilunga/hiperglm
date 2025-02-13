@@ -1,3 +1,5 @@
+# R/methods.R
+
 # Coefficients
 #' Extract coefficients from a hiperglm object
 #' @export

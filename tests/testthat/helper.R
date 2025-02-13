@@ -37,9 +37,6 @@ simulate_data <- function(
   return(list(design = design, outcome = outcome, coef_true = coef_true))
 }
 
-
-# ---
-
 # Part HW2.E4.6(b)(c) -- Requires code from HW2.E3(B);
 # Helper code extracted from that part of assignment and put here:
 

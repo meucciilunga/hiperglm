@@ -4,13 +4,19 @@
 \alias{hiperglm}
 \title{hiper_glm}
 \usage{
-hiperglm(design, outcome)
+hiperglm(design, outcome, optimizer = "pseudo")
 }
 \arguments{
-\item{design}{the GLM design matrix}
+\item{design}{A numeric matrix representing the linear model design matrix.}
 
-\item{outcome}{the outcome variable}
+\item{outcome}{A numeric vector representing the response variable observations.}
+
+\item{optimizer}{Character. Optimization method to use. Must be either "pseudo" or "BFGS".
+Default is "pseudo".}
+}
+\value{
+A list containing the fitted model components.
 }
 \description{
-hiper_glm
+Fit a GLM using either pseudo-inverse (OLS) or BFGS optimization.
 }

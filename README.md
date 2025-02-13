@@ -4,7 +4,7 @@ The **hiperglm** package is a GLM modeling library developed in R for the JHU-BS
 
 ## Author: Deerspring
 
-### **UPDATE 0.0.2: 2025-02-10 HW2)**  
+### **UPDATE 0.0.2: (2025-02-10 HW2)**  
 hiperglm package has been updated to fulfill HW2 requirements:
 
 - **MLE Estimation Methods:**  
@@ -23,6 +23,8 @@ hiperglm package has been updated to fulfill HW2 requirements:
   - Included tests for following tasks:
     - Verify the consistency of the analytical gradient with a finite-difference approximation
     - Compare MLE estimates from both optimization methods.
-    
+
+---
+
 ### UPDATE 0.0.1: 2025-01-31 (HW1)
 Currently, package has a placeholder function, `hiper_glm()`, and minimal S3 methods (`coef()`, `vcov()`, and `print()`). These methods currently only warn that they are unimplemented when called.
