@@ -17,7 +17,7 @@ logit_loglik_grad <- function(design, outcome, beta) {
 
 # Optimizer function: BFGS method for logistic MLE.
 hiperglm_bfgs_logit <- function(design, outcome) {
-  
+
   # Wrap the logistic log-likelihood and gradient so that only beta is required.
   llfn <- function(beta) logit_loglik_fn(design, outcome, beta)
   llgr <- function(beta) logit_loglik_grad(design, outcome, beta)
@@ -36,4 +36,11 @@ hiperglm_bfgs_logit <- function(design, outcome) {
   }
   
   return(opt_result$par)
+}
+
+# Logistic Hessian: Second derivative of the log-likelihood
+logistic_loglik_hess <- function(design, outcome, beta) {
+  p <- 1 / (1 + exp(-design %*% beta))
+  W <- as.vector(p * (1 - p))
+  - t(design) %*% (design * W)
 }
